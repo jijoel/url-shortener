@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/{path?}','ShortenerController@index')
+       ->where('path', '.+');
+
+Route::post('/', 'ShortenerController@store');

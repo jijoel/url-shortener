@@ -31,7 +31,11 @@
 
                 </v-flex>
                 <v-flex xs12 sm2>
-                  <v-btn class="primary--text" type="submit">
+                  <v-btn
+                    :disabled="hasErrors"
+                    class="primary--text"
+                    type="submit"
+                  >
                     Shorten Url
                   </v-btn>
                 </v-flex>
@@ -92,6 +96,10 @@ export default {
   },
 
   computed: {
+    hasErrors() {
+      return this.$validator.errors.items.length > 0
+    },
+
     shortUrl() {
       return window.location.href + this.short
     },

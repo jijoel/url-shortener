@@ -32,6 +32,11 @@ if (process.env.ARG == 'detail') {
 mix.webpackConfig({
     plugins: plugins,
     resolve: { symlinks: false },
+    externals: {
+        'vue': 'Vue',
+        'vuetify': 'Vuetify',
+        'vee-validate': 'VeeValidate',
+    },
 })
 mix.options({
     extractVueStyles: true,

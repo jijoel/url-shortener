@@ -33,6 +33,7 @@ mix.webpackConfig({
     plugins: plugins,
     resolve: { symlinks: false },
     externals: {
+        'axios': 'axios',
         'vue': 'Vue',
         'vuetify': 'Vuetify',
         'vee-validate': 'VeeValidate',

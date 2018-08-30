@@ -18,9 +18,10 @@
       </v-app>
     </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vee-validate/dist/vee-validate.min.js"></script>
   <script src="{{mix('/js/app.js')}}"></script>
   </body>
 </html>

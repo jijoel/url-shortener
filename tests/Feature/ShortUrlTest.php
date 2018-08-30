@@ -6,10 +6,10 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-use App\Shortener;
+use App\ShortUrl;
 
 /** @group now */
-class ShortenerTest extends TestCase
+class ShortUrlTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -23,7 +23,7 @@ class ShortenerTest extends TestCase
     /** @test */
     public function user_is_redirected_from_short_link()
     {
-        $link = factory(Shortener::class)->create();
+        $link = factory(ShortUrl::class)->create();
 
         $this->get('/'.$link->short)
             ->assertRedirect($link->long);

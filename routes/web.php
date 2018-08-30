@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/{path?}','ShortenerController@index')
+Route::get('/{path?}','ShortUrlController@index')
        ->where('path', '.+');
 
-Route::post('/', 'ShortenerController@store');
+Route::post('/', 'ShortUrlController@store');

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Shortener;
+use App\ShortUrl;
 use Illuminate\Http\Request;
 
-class ShortenerController extends Controller
+class ShortUrlController extends Controller
 {
 
     public function index($short = null)
@@ -13,7 +13,7 @@ class ShortenerController extends Controller
         if (! $short)
             return view('welcome');
 
-        $found = Shortener::find($short);
+        $found = ShortUrl::find($short);
         if (! $found)
             return view('welcome');
 
@@ -22,7 +22,7 @@ class ShortenerController extends Controller
 
 
     // this is an api call that will return
-    // a Shortener object
+    // a ShortUrl object
     public function store(Request $request)
     {
         $request->validate([
@@ -30,11 +30,11 @@ class ShortenerController extends Controller
         ]);
 
         $long = $request->input('url');
-        $found = Shortener::where('long', $long)->first();
+        $found = ShortUrl::where('long', $long)->first();
         if ($found)
             return $found;
 
-        $link = new Shortener();
+        $link = new ShortUrl();
         $link->long = $long;
         $link->short = $this->getShortLink();
         $link->save();

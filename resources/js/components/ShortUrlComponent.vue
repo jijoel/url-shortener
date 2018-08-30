@@ -136,8 +136,12 @@ export default {
         })
       })
     },
+  },
 
-
+  watch: {
+    url(val) {
+      this.short = ''
+    }
   },
 
 }

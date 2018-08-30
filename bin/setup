@@ -1,0 +1,18 @@
+#!/bin/bash
+
+rmdir public/css
+rmdir public/js
+
+mkdir storage/app/public/css
+mkdir storage/app/public/js
+mkdir storage/app/public/fonts
+mkdir storage/app/public/images
+
+cd public
+ln -s ../storage/app/public storage
+ln -s storage/css css
+ln -s storage/js js
+ln -s storage/fonts fonts
+ln -s storage/images images
+cd ..
+

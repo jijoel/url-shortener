@@ -1,4 +1,7 @@
 let mix = require('laravel-mix');
+let webpack = require('webpack');
+
+let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 /*
  |--------------------------------------------------------------------------
@@ -11,5 +14,47 @@ let mix = require('laravel-mix');
  |
  */
 
+plugins = [
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/)
+];
+
+if (process.env.ARG == 'detail') {
+    plugins.push(
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            reportFilename: '../storage/app/public/report.html',
+            generateStatsFile: true,
+            statsFilename: '../storage/app/public/stats.json',
+        })
+    );
+}
+
+mix.webpackConfig({
+    plugins: plugins,
+    resolve: { symlinks: false },
+})
+mix.options({
+    extractVueStyles: true,
+})
+
+if (mix.inProduction()) {
+    mix.version();
+    mix.webpackConfig({
+        plugins: plugins,
+        module: {
+            rules: [{
+                test: /\.js?$/,
+                exclude: /(bower_components)/,
+                use: [{
+                    loader: 'babel-loader',
+                    options: mix.config.babel()
+                }]
+            }]
+        }
+    });
+}
+
+
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+   .stylus('resources/assets/stylus/app.styl', 'public/css');
+

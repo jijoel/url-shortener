@@ -33,6 +33,16 @@ return [
 
     'connections' => [
 
+        'memory' => [ 
+             'driver' => 'sqlite', 
+             'database' => ':memory:', 
+         ], 
+ 
+        'dusk' => [ 
+             'driver' => 'sqlite', 
+             'database' => database_path('dusk.sqlite'), 
+         ], 
+ 
         'sqlite' => [
             'driver' => 'sqlite',
             'database' => env('DB_DATABASE', database_path('database.sqlite')),

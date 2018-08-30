@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# This uses gource to show a visualization of the project
+TITLE=`cat ../.env | grep APP_NAME | cut -d '=' -f 2`
+
+if [ $1 ]
+then
+
+gource \
+    -s 0.01 \
+    -p 0.01 \
+    -1280x720 \
+    --disable-auto-skip \
+    --multi-sampling \
+    --stop-at-end \
+    --highlight-users \
+    --caption-duration 1 \
+    --max-files 0 \
+    --file-idle-time 0 \
+    --hide mouse,progress,filenames,dirnames \
+    --font-size 20 \
+    --date-format '%B %Y' \
+    --title $TITLE \
+    --output-framerate 30 \
+    --output-ppm-stream - \
+| ffmpeg \
+    -y \
+    -r 30 \
+    -f image2pipe \
+    -vcodec ppm \
+    -i - \
+    -vcodec libx264 \
+    -preset ultrafast \
+    -pix_fmt yuv420p \
+    -crf 1 \
+    -threads 0 \
+    -bf 0 \
+    $1
+
+else
+
+gource \
+    -s 0.01 \
+    -p 0.01 \
+    --auto-skip-seconds 1 \
+    --multi-sampling \
+    --stop-at-end \
+    --highlight-users \
+    --caption-duration 1 \
+    --max-files 0 \
+    --file-idle-time 0 \
+    --hide mouse,progress,filenames,dirnames \
+    --font-size 20 \
+    --title $TITLE
+
+fi

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use App\ShortUrl;
 
-/** @group now */
+
 class ShortUrlTest extends TestCase
 {
     use RefreshDatabase;

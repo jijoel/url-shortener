@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/{path?}','ShortUrlController@index')
+       ->where('path', '.+');
+
+Route::post('/', 'ShortUrlController@store');

@@ -11,7 +11,11 @@
   </head>
   <body>
     <div id="app">
-      <example-component></example-component>
+      <v-app>
+        <v-content>
+          <short-url-component></short-url-component>
+        </v-content>
+      </v-app>
     </div>
 
   <script src="{{mix('/js/app.js')}}"></script>

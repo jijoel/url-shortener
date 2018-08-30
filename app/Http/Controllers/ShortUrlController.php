@@ -36,18 +36,10 @@ class ShortUrlController extends Controller
 
         $link = new ShortUrl();
         $link->long = $long;
-        $link->short = $this->getShortLink();
+        $link->short = ShortUrl::makeShortLink();
         $link->save();
 
         return $link;
-    }
-
-    // In a bigger project, this would go into its
-    // own class. This is small enough that I think
-    // it's fine to leave in the controller
-    private function getShortLink()
-    {
-        return uniqid();
     }
 
 }

@@ -4,7 +4,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\ShortUrl::class, function (Faker $faker) {
     return [
-        'short' => $faker->unique()->lexify('??????'),
+        'short' => App\ShortUrl::makeShortLink(),
         'long' => $faker->url,
     ];
 });

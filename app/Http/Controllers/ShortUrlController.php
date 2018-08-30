@@ -11,11 +11,11 @@ class ShortUrlController extends Controller
     public function index($short = null)
     {
         if (! $short)
-            return view('welcome');
+            return view('app');
 
         $found = ShortUrl::find($short);
         if (! $found)
-            return view('welcome');
+            return view('app');
 
         return redirect($found->long);
     }

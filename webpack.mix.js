@@ -55,6 +55,6 @@ if (mix.inProduction()) {
 }
 
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .stylus('resources/assets/stylus/app.styl', 'public/css');
+mix.js('resources/js/app.js', 'public/js')
+   .stylus('resources/stylus/app.styl', 'public/css');
 
